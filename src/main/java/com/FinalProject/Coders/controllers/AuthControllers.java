@@ -24,9 +24,27 @@ public class AuthControllers {
     @PostMapping("/signup")
     public ResponseEntity<GeneralDTO> register(@RequestBody RegisterUser registerUserDto) {
         UserEntity registeredUser = authenticationService.signUp(registerUserDto);
+        RegisterResponse registerResponse = RegisterResponse.builder()
+                .id(registeredUser.getId())
+                .firstName(registeredUser.getFirstName())
+                .lastName(registeredUser.getLastName())
+                .email(registeredUser.getEmail())
+                .password(registeredUser.getPassword())
+                .age(registeredUser.getAge())
+                .gender(registeredUser.getGender())
+                .role(registeredUser.getUserRole())
+                .blood(registeredUser.getPatientInfo().getBlood())
+                .height(registeredUser.getPatientInfo().getHeight())
+                .weight(registeredUser.getPatientInfo().getWeight())
+                .currentStepCount(registeredUser.getPatientInfo().getCurrentStepCount())
+                .desiredKg(registeredUser.getPatientInfo().getDesiredKg())
+                .caloriesBurned(registeredUser.getPatientInfo().getCaloryburned())
+                .isTakingMedication(registeredUser.getPatientInfo().getIsTakingMedication())
+                .build();
+
         GeneralDTO DTO = new GeneralDTO();
         DTO.setStatusCode(HttpStatus.ACCEPTED);
-        DTO.setDTO(registeredUser);
+        DTO.setDTO(registerResponse);
         return ResponseEntity.ok(DTO);
     }
 
