@@ -19,9 +19,9 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "doctor_id")
-//    private DoctorInfo doctorInfo;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
+    private DoctorInfo doctorInfo;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id")

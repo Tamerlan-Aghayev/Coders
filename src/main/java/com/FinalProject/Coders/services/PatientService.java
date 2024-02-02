@@ -1,8 +1,11 @@
 package com.FinalProject.Coders.services;
 
 import com.FinalProject.Coders.DTOs.patientRegisterDTO;
+import com.FinalProject.Coders.entities.DoctorInfo;
 import com.FinalProject.Coders.entities.PatientInfo;
 import com.FinalProject.Coders.entities.UserEntity;
+import com.FinalProject.Coders.mapper.ModelMapperUtil;
+import com.FinalProject.Coders.repositories.DoctorInfoRepo;
 import com.FinalProject.Coders.repositories.PatientRepo;
 import com.FinalProject.Coders.repositories.UserRepo;
 import jakarta.transaction.Transactional;
@@ -10,11 +13,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PatientService {
     private final PatientRepo patientRepo;
     private final UserRepo userRepo;
+    private final ModelMapperUtil modelMapperUtil;
 
     @Transactional
     public boolean savePatient(patientRegisterDTO patient)

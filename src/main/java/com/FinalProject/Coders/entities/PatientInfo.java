@@ -28,7 +28,7 @@ public class PatientInfo {
 
     private Integer weight;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "current_diseases" , joinColumns = @JoinColumn(name = "current_diseases_id"))
     private List<String> currentDiseases;
 
@@ -50,9 +50,11 @@ public class PatientInfo {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity userEntity;
 
-//    @OneToMany(mappedBy = "patient_info")
-//    private List<Treatment> treatments;
+    @OneToMany(mappedBy = "patientInfo")
+    private List<Treatment> treatments;
 
-//    @OneToMany(mappedBy = "patient_info")
-//    private List<Appointment> appointments;
+
+
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointments;
 }

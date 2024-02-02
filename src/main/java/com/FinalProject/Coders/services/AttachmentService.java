@@ -49,7 +49,7 @@ public class AttachmentService {
         }
 
         try {
-            String uploadDir = "C:\\Users\\Tural\\Desktop\\Coders\\src\\main\\java\\com\\FinalProject\\Coders\\attachments";
+            String uploadDir = "/opt/java_projects/coders/Coders/src/main/java/com/FinalProject/Coders/attachments";
             // Create the directory if it doesn't exist
             File dir = new File(uploadDir);
             if (!dir.exists()) {

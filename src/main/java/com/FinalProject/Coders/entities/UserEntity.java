@@ -10,10 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Table(name = "users")
 @Entity
@@ -57,6 +54,8 @@ public class UserEntity implements UserDetails , DTO {
 
     @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     private PatientInfo patientInfo;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<CardEntity> cardEntities = new ArrayList<>();
 
 //    @OneToOne()
 //    private DoctorInfo doctorInfo;

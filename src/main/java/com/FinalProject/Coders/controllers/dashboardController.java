@@ -1,6 +1,7 @@
 package com.FinalProject.Coders.controllers;
 
 import com.FinalProject.Coders.DTOs.GeneralDTO;
+import com.FinalProject.Coders.DTOs.UserDTO;
 import com.FinalProject.Coders.entities.UserEntity;
 import com.FinalProject.Coders.services.AttachmentService;
 import jakarta.transaction.Transactional;
@@ -24,7 +25,6 @@ public class dashboardController {
     public ResponseEntity<GeneralDTO> getUserDetails()
     {
         UserEntity user =(UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
         try {
             GeneralDTO DTO = dashboardService.gettingUserDetails(user);
             DTO.setStatusCode(HttpStatus.ACCEPTED);

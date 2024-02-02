@@ -51,7 +51,7 @@ public class dashboardService {
             if(user.getPatientInfo() != null)
             {
 
-//                PatientInfo patientInfo = patientRepo.findById(user.getPatientInfo().getId()).orElseThrow(RuntimeException::new);
+//              PatientInfo patientInfo = patientRepo.findById(user.getPatientInfo().getId()).orElseThrow(RuntimeException::new);
                 PatientInfo patientInfo = user.getPatientInfo();
 //                assert patientInfo != null;
                 userDetails.setHeight(patientInfo.getHeight());
